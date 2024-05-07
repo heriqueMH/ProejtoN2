@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PaisRepository extends JpaRepository<Pais, Long> {
-    // Aqui você pode adicionar métodos de consulta personalizados, por exemplo, buscar países por continente
 }
 

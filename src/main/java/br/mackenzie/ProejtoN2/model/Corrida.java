@@ -5,8 +5,7 @@ import java.util.Date;
 
 @Entity
 public class Corrida {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Date data;

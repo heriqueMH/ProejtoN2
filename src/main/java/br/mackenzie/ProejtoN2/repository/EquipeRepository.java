@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
-    // Aqui você pode adicionar métodos de consulta personalizados se necessário
 }
 

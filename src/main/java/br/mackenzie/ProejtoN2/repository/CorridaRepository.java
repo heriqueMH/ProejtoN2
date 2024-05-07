@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CorridaRepository extends JpaRepository<Corrida, Long> {
-    // Adicione métodos de consulta que retornem carros por critérios específicos, como ano ou modelo
 }

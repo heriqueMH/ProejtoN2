@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long> {
-    // Métodos de busca personalizada podem ser incluídos, como buscar cidades por estado ou país
 }
 
