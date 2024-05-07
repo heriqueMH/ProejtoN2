@@ -1,4 +1,4 @@
-package br.mackenzie.ProejtoN2.interfaces;
+package br.mackenzie.ProejtoN2.repository;
 
 import br.mackenzie.ProejtoN2.model.Equipe;
 import org.springframework.data.jpa.repository.JpaRepository;
