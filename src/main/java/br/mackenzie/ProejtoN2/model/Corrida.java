@@ -12,6 +12,17 @@ public class Corrida {
     private String circuito;
     private String condicoesClimaticas;
 
+    public Corrida() {}
+
+    public Corrida(Long id, String nome, Date data, String circuito, String condicoesClimaticas, Cidade cidade) {
+        this.id = id;
+        this.nome = nome;
+        this.data = data;
+        this.circuito = circuito;
+        this.condicoesClimaticas = condicoesClimaticas;
+        this.cidade = cidade;
+    }
+
     public Long getId() {
         return this.id;
     }

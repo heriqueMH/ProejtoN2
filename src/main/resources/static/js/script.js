@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const listaEquipes = document.getElementById('listaEquipes');
-
-    // Dados simulados como se fossem recebidos de uma API
     const equipes = [
         { nome: 'Mercedes' },
         { nome: 'Red Bull' },

@@ -2,6 +2,7 @@ package br.mackenzie.ProejtoN2.controller;
 
 import br.mackenzie.ProejtoN2.model.Equipe;
 import br.mackenzie.ProejtoN2.repository.EquipeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

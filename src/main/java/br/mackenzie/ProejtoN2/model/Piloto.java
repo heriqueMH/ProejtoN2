@@ -11,6 +11,16 @@ public class Piloto {
     private String numSuperlicenca;
     private Date dataDeNascimento;
 
+    public Piloto() {}
+
+    public Piloto(Long id, String nome, String numSuperlicenca, Date dataDeNascimento, Equipe equipe) {
+        this.id = id;
+        this.nome = nome;
+        this.numSuperlicenca = numSuperlicenca;
+        this.dataDeNascimento = dataDeNascimento;
+        this.equipe = equipe;
+    }
+
     public Long getId() {
         return this.id;
     }

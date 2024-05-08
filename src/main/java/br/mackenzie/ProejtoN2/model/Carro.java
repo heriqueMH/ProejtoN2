@@ -11,6 +11,18 @@ public class Carro {
     private Integer ano;
     private String categoria;
 
+    
+    public Carro(){}
+
+    public Carro(Long id, String modelo, String marca, Integer ano, String categoria, Equipe equipe) {
+        this.id = id;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano;
+        this.categoria = categoria;
+        this.equipe = equipe;
+    }
+
     public Long getId() {
         return this.id;
     }

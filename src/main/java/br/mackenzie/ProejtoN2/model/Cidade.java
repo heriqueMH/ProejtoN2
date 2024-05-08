@@ -12,6 +12,17 @@ public class Cidade {
     private String estado;
     private Long populacao;
 
+    public Cidade(){}
+
+    public Cidade(Long id, String nome, String estado, Long populacao, Pais pais, List<Corrida> corridas) {
+        this.id = id;
+        this.nome = nome;
+        this.estado = estado;
+        this.populacao = populacao;
+        this.pais = pais;
+        this.corridas = corridas;
+    }
+
     public Long getId() {
         return this.id;
     }

@@ -11,6 +11,16 @@ public class Pais {
     private String continente;
     private Long populacao;
 
+    public Pais() {}
+
+    public Pais(Long id, String nome, String continente, Long populacao, List<Cidade> cidades) {
+        this.id = id;
+        this.nome = nome;
+        this.continente = continente;
+        this.populacao = populacao;
+        this.cidades = cidades;
+    }
+
     public Long getId() {
         return this.id;
     }

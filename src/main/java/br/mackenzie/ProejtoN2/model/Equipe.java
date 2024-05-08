@@ -10,6 +10,17 @@ public class Equipe {
     private String nomeEquipe;
     private Integer qtdeFunc;
 
+    public Equipe() {}
+
+    public Equipe(Long id, String nomeEquipe, Integer qtdeFunc, Pais pais, List<Piloto> pilotos, List<Carro> carros) {
+        this.id = id;
+        this.nomeEquipe = nomeEquipe;
+        this.qtdeFunc = qtdeFunc;
+        this.pais = pais;
+        this.pilotos = pilotos;
+        this.carros = carros;
+    }
+
     public Long getId() {
         return this.id;
     }
