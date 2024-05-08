@@ -33,6 +33,16 @@ public class EquipeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/pilotos")
+    public String getBuscaPilotosEquipe(@RequestParam(name = "texto") String texto) {
+        return "Texto recebido: " + texto;
+    }
+
+    @GetMapping("/carros")
+    public String getBuscaCarrosEquipe(@RequestParam(name = "texto") String texto) {
+        return "Texto recebido: " + texto;
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Equipe> atualizarEquipe(@PathVariable Long id, @RequestBody Equipe equipeDetalhes) {
         return equipeRepository.findById(id)

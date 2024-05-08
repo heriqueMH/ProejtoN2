@@ -33,6 +33,11 @@ public class CorridaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/cidade")
+    public String getBuscaCidadeCorrida(@RequestParam(name = "texto") String texto) {
+        return "Texto recebido: " + texto;
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Corrida> atualizarCorrida(@PathVariable Long id, @RequestBody Corrida detalhesCorrida) {
         return corridaRepository.findById(id)

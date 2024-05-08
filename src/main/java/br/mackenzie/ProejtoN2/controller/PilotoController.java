@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/pilotos")
 public class PilotoController {
@@ -31,6 +32,11 @@ public class PilotoController {
         return pilotoRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/equipe")
+    public String getBuscaEquipePiloto(@RequestParam(name = "texto") String texto) {
+        return "Texto recebido: " + texto;
     }
 
     @PutMapping("/{id}")

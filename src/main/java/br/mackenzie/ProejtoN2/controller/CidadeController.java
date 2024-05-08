@@ -33,6 +33,11 @@ public class CidadeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/populacao")
+    public String getBuscaPopulacao(@RequestParam(name = "texto") String texto) {
+        return "Texto recebido: " + texto;
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Cidade> atualizarcidade(@PathVariable Long id, @RequestBody Cidade detalhescidade) {
         return cidadeRepository.findById(id)
