@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/carros")
 public class CarroController {
@@ -17,7 +15,7 @@ public class CarroController {
     private CarroRepository carroRepository;
 
     @GetMapping
-    public List<Carro> listarTodascarros() {
+    public Iterable<Carro> listarTodascarros() {
         return carroRepository.findAll();
     }
 

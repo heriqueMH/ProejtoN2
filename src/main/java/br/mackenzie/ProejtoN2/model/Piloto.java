@@ -1,8 +1,5 @@
 package br.mackenzie.ProejtoN2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 
 import java.util.Date;

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/cidades")
 public class CidadeController {
@@ -17,7 +15,7 @@ public class CidadeController {
     private CidadeRepository cidadeRepository;
 
     @GetMapping
-    public List<Cidade> listarTodascidades() {
+    public Iterable<Cidade> listarTodascidades() {
         return cidadeRepository.findAll();
     }
 

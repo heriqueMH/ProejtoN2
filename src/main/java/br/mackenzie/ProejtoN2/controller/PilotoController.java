@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-
 @RestController
 @RequestMapping("/api/pilotos")
 public class PilotoController {
@@ -18,7 +15,7 @@ public class PilotoController {
     private PilotoRepository pilotoRepository;
 
     @GetMapping
-    public List<Piloto> listarTodosPilotos() {
+    public Iterable<Piloto> listarTodosPilotos() {
         return pilotoRepository.findAll();
     }
 

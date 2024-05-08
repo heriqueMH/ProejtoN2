@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/equipes")
 public class EquipeController {
@@ -17,7 +15,7 @@ public class EquipeController {
     private EquipeRepository equipeRepository;
 
     @GetMapping
-    public List<Equipe> listarTodasEquipes() {
+    public Iterable<Equipe> listarTodasEquipes() {
         return equipeRepository.findAll();
     }
 

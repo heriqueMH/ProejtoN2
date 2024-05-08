@@ -1,10 +1,8 @@
 package br.mackenzie.ProejtoN2.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import br.mackenzie.ProejtoN2.model.Corrida;
 
-@Repository
-public interface CorridaRepository extends JpaRepository<Corrida, Long> {
+public interface CorridaRepository extends CrudRepository<Corrida, Long> {
 }
