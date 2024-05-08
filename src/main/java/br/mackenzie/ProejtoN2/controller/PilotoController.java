@@ -33,14 +33,14 @@ public class PilotoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/equipe")
-    public ResponseEntity<List<Piloto>> getBuscaEquipePiloto(@RequestParam(name = "nome") String nomeEquipe) {
-        List<Piloto> pilotos = pilotoRepository.findByEquipeNome(nomeEquipe);
-        if (pilotos.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(pilotos);
-    }
+    // @GetMapping("/equipe")
+    // public ResponseEntity<List<Piloto>> getBuscaEquipePiloto(@RequestParam(name = "nome") String nomeEquipe) {
+    //     List<Piloto> pilotos = pilotoRepository.findByEquipeNome(nomeEquipe);
+    //     if (pilotos.isEmpty()) {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    //     return ResponseEntity.ok(pilotos);
+    // }
 
     @PutMapping("/{id}")
     public ResponseEntity<Piloto> atualizarPiloto(@PathVariable Long id, @RequestBody Piloto pilotoDetalhes) {

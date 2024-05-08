@@ -1,6 +1,6 @@
 package br.mackenzie.ProejtoN2.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -10,6 +10,16 @@ public class Equipe {
     private Long id;
     private String nomeEquipe;
     private Integer qtdeFunc;
+
+    @ManyToOne
+    @JoinColumn(name = "pais_id")
+    private Pais pais;
+
+    @OneToMany(mappedBy = "equipe")
+    private List<Piloto> pilotos;
+
+    @OneToMany(mappedBy = "equipe")
+    private List<Carro> carros;
 
     public Equipe() {}
 
@@ -70,13 +80,5 @@ public class Equipe {
         this.carros = carros;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "pais_id")
-    private Pais pais;
-
-    @OneToMany(mappedBy = "equipe")
-    private List<Piloto> pilotos;
-
-    @OneToMany(mappedBy = "equipe")
-    private List<Carro> carros;
+    
 }

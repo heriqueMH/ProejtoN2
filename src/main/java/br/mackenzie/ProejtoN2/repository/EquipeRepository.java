@@ -8,6 +8,6 @@ import br.mackenzie.ProejtoN2.model.Carro;
 import br.mackenzie.ProejtoN2.model.Equipe;
 
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
-    List<Carro> findByEquipeId(Long equipeId);
+    // List<Carro> findByEquipeId(Long equipeId);
 }
 

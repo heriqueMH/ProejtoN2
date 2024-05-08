@@ -43,15 +43,15 @@ public class EquipeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}/pilotos")
-    public ResponseEntity<List<Piloto>> getPilotosDaEquipe(@PathVariable Long id) {
-        return ResponseEntity.ok(pilotoRepository.findByEquipeId(id));
-    }
+    // @GetMapping("/{id}/pilotos")
+    // public ResponseEntity<List<Piloto>> getPilotosDaEquipe(@PathVariable Long id) {
+    //     return ResponseEntity.ok(pilotoRepository.findByEquipeId(id));
+    // }
 
-    @GetMapping("/{id}/carros")
-    public ResponseEntity<List<Carro>> getCarrosDaEquipe(@PathVariable Long id) {
-        return ResponseEntity.ok(carroRepository.findByEquipeId(id));
-    }
+    // @GetMapping("/{id}/carros")
+    // public ResponseEntity<List<Carro>> getCarrosDaEquipe(@PathVariable Long id) {
+    //     return ResponseEntity.ok(carroRepository.findByEquipeId(id));
+    // }
 
     @PutMapping("/{id}")
     public ResponseEntity<Equipe> atualizarEquipe(@PathVariable Long id, @RequestBody Equipe equipeDetalhes) {

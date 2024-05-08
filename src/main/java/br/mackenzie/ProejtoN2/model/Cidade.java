@@ -1,6 +1,6 @@
 package br.mackenzie.ProejtoN2.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.List;
 

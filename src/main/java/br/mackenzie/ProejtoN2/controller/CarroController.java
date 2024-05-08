@@ -33,14 +33,14 @@ public class CarroController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/por-equipe")
-    public ResponseEntity<List<Carro>> buscarPorNomeEquipe(@RequestParam("nome") String nomeEquipe) {
-        List<Carro> carros = carroRepository.findByEquipeNome(nomeEquipe);
-        if(carros.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(carros);
-    }
+    // @GetMapping("/por-equipe")
+    // public ResponseEntity<List<Carro>> buscarPorNomeEquipe(@RequestParam("nome") String nomeEquipe) {
+    //     List<Carro> carros = carroRepository.findByEquipeNome(nomeEquipe);
+    //     if(carros.isEmpty()) {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    //     return ResponseEntity.ok(carros);
+    // }
 
     @PutMapping("/{id}")
     public ResponseEntity<Carro> atualizarcarro(@PathVariable Long id, @RequestBody Carro detalhescarro) {
