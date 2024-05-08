@@ -6,6 +6,7 @@ import br.mackenzie.ProejtoN2.repository.CorridaRepository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/corridas")
@@ -32,8 +33,12 @@ public class CorridaController {
     }
 
     @GetMapping("/cidade")
-    public String getBuscaCidadeCorrida(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    public ResponseEntity<List<Corrida>> buscarPorCidade(@RequestParam(name = "cidade") String cidade) {
+        List<Corrida> corridas = corridaRepository.findByCidadeNome(cidade);
+        if (corridas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(corridas);
     }
 
     @PutMapping("/{id}")

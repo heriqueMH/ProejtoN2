@@ -1,11 +1,17 @@
 package br.mackenzie.ProejtoN2.controller;
 
 import br.mackenzie.ProejtoN2.model.Equipe;
+import br.mackenzie.ProejtoN2.model.Piloto;
+import br.mackenzie.ProejtoN2.model.Carro;
 import br.mackenzie.ProejtoN2.repository.EquipeRepository;
+import br.mackenzie.ProejtoN2.repository.PilotoRepository;
+import br.mackenzie.ProejtoN2.repository.CarroRepository;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/equipes")
@@ -13,6 +19,12 @@ public class EquipeController {
 
     @Autowired
     private EquipeRepository equipeRepository;
+
+    @Autowired
+    private PilotoRepository pilotoRepository;
+
+    @Autowired
+    private CarroRepository carroRepository;
 
     @GetMapping
     public Iterable<Equipe> listarTodasEquipes() {
@@ -31,14 +43,14 @@ public class EquipeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/pilotos")
-    public String getBuscaPilotosEquipe(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    @GetMapping("/{id}/pilotos")
+    public ResponseEntity<List<Piloto>> getPilotosDaEquipe(@PathVariable Long id) {
+        return ResponseEntity.ok(pilotoRepository.findByEquipeId(id));
     }
 
-    @GetMapping("/carros")
-    public String getBuscaCarrosEquipe(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    @GetMapping("/{id}/carros")
+    public ResponseEntity<List<Carro>> getCarrosDaEquipe(@PathVariable Long id) {
+        return ResponseEntity.ok(carroRepository.findByEquipeId(id));
     }
 
     @PutMapping("/{id}")

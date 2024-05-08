@@ -6,6 +6,7 @@ import br.mackenzie.ProejtoN2.repository.CidadeRepository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cidades")
@@ -32,8 +33,12 @@ public class CidadeController {
     }
 
     @GetMapping("/populacao")
-    public String getBuscaPopulacao(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    public ResponseEntity<List<Cidade>> getCidadesPorPopulacao(@RequestParam(name = "minima") Long populacaoMinima) {
+        List<Cidade> cidades = cidadeRepository.findByPopulacaoGreaterThanEqual(populacaoMinima);
+        if (cidades.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cidades);
     }
 
     @PutMapping("/{id}")

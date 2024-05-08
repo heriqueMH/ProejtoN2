@@ -1,11 +1,15 @@
 package br.mackenzie.ProejtoN2.controller;
 
+import br.mackenzie.ProejtoN2.model.Cidade;
 import br.mackenzie.ProejtoN2.model.Pais;
 import br.mackenzie.ProejtoN2.repository.PaisRepository;
+import br.mackenzie.ProejtoN2.repository.CidadeRepository;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/paiss")
@@ -13,6 +17,9 @@ public class PaisController {
 
     @Autowired
     private PaisRepository paisRepository;
+
+    @Autowired
+    private CidadeRepository cidadeRepository;
 
     @GetMapping
     public Iterable<Pais> listarTodospaiss() {
@@ -31,9 +38,9 @@ public class PaisController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/cidades")
-    public String getBuscaCidade(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    @GetMapping("/{id}/cidades")
+    public ResponseEntity<List<Cidade>> getCidadesPeloPais(@PathVariable Long id) {
+        return ResponseEntity.ok(cidadeRepository.findByPaisId(id));
     }
 
     @PutMapping("/{id}")

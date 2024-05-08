@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/carros")
 public class CarroController {
@@ -31,9 +33,13 @@ public class CarroController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/equipe")
-    public String getBuscaEquipeCarro(@RequestParam(name = "texto") String texto) {
-        return "Texto recebido: " + texto;
+    @GetMapping("/por-equipe")
+    public ResponseEntity<List<Carro>> buscarPorNomeEquipe(@RequestParam("nome") String nomeEquipe) {
+        List<Carro> carros = carroRepository.findByEquipeNome(nomeEquipe);
+        if(carros.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(carros);
     }
 
     @PutMapping("/{id}")
