@@ -3,8 +3,8 @@ package br.mackenzie.ProejtoN2.controller;
 import br.mackenzie.ProejtoN2.model.Cidade;
 import br.mackenzie.ProejtoN2.repository.CidadeRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
