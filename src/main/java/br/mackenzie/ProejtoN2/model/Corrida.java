@@ -1,11 +1,15 @@
 package br.mackenzie.ProejtoN2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import javax.persistence.*;
+
 import java.util.Date;
 
 @Entity
 public class Corrida {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
     private String nome;
     private Date data;

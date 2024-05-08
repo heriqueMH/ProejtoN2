@@ -1,12 +1,15 @@
 package br.mackenzie.ProejtoN2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import javax.persistence.*;
-import java.util.List;
 
+import java.util.List;
 
 @Entity
 public class Cidade {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
     private String nome;
     private String estado;

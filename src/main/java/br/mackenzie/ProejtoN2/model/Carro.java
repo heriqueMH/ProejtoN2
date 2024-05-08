@@ -1,10 +1,13 @@
 package br.mackenzie.ProejtoN2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 
 @Entity
 public class Carro {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
     private String modelo;
     private String marca;
