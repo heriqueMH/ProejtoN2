@@ -38,10 +38,10 @@ public class PaisController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // @GetMapping("/{id}/cidades")
-    // public ResponseEntity<List<Cidade>> getCidadesPeloPais(@PathVariable Long id) {
-    //     return ResponseEntity.ok(cidadeRepository.findByPaisId(id));
-    // }
+    @GetMapping("/{id}/cidades")
+    public ResponseEntity<List<Cidade>> getCidadesPeloPais(@PathVariable Long id) {
+        return ResponseEntity.ok(cidadeRepository.findByPaisId(id));
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Pais> atualizarpais(@PathVariable Long id, @RequestBody Pais paisDetalhes) {

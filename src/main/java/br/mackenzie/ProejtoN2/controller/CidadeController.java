@@ -32,14 +32,14 @@ public class CidadeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // @GetMapping("/populacao")
-    // public ResponseEntity<List<Cidade>> getCidadesPorPopulacao(@RequestParam(name = "minima") Long populacaoMinima) {
-    //     List<Cidade> cidades = cidadeRepository.findByPopulacaoGreaterThanEqual(populacaoMinima);
-    //     if (cidades.isEmpty()) {
-    //         return ResponseEntity.notFound().build();
-    //     }
-    //     return ResponseEntity.ok(cidades);
-    // }
+    @GetMapping("/populacao")
+    public ResponseEntity<List<Cidade>> getCidadesPorPopulacao(@RequestParam(name = "minima") Long populacaoMinima) {
+        List<Cidade> cidades = cidadeRepository.findByPopulacaoGreaterThanEqual(populacaoMinima);
+        if (cidades.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cidades);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cidade> atualizarcidade(@PathVariable Long id, @RequestBody Cidade detalhescidade) {

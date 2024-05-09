@@ -8,8 +8,8 @@ import java.util.List;
 import br.mackenzie.ProejtoN2.model.Carro;
 
 public interface CarroRepository extends JpaRepository<Carro, Long> {
-    // @Query("SELECT c FROM Carro c WHERE c.equipe.nome = :nomeEquipe")
-    // List<Carro> findByEquipeNome(@Param("nomeEquipe") String nomeEquipe);
+    @Query("SELECT c FROM Carro c WHERE c.equipe.nomeEquipe = :nomeEquipe")
+    List<Carro> findByEquipeNome(@Param("nomeEquipe") String nomeEquipe);
 
     @Query("SELECT c FROM Carro c WHERE c.equipe.id = :equipeId")
     List<Carro> findByEquipeId(Long equipeId);

@@ -32,14 +32,14 @@ public class CorridaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // @GetMapping("/cidade")
-    // public ResponseEntity<List<Corrida>> buscarPorCidade(@RequestParam(name = "cidade") String cidade) {
-    //     List<Corrida> corridas = corridaRepository.findByCidadeNome(cidade);
-    //     if (corridas.isEmpty()) {
-    //         return ResponseEntity.notFound().build();
-    //     }
-    //     return ResponseEntity.ok(corridas);
-    // }
+    @GetMapping("/cidade")
+    public ResponseEntity<List<Corrida>> buscarPorCidade(@RequestParam(name = "cidade") String cidade) {
+        List<Corrida> corridas = corridaRepository.findByCidadeNome(cidade);
+        if (corridas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(corridas);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Corrida> atualizarCorrida(@PathVariable Long id, @RequestBody Corrida detalhesCorrida) {
