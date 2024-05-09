@@ -13,6 +13,7 @@ public interface CidadeRepository extends JpaRepository<Cidade, Long> {
     List<Cidade> findByPopulacaoGreaterThanEqual(@Param("populacao") Long populacao);
 
     @Query("SELECT c FROM Cidade c WHERE c.pais.id = :paisId")
+    
     List<Cidade> findByPaisId(@Param("paisId") Long paisId);
     
 }

@@ -9,7 +9,7 @@ public class PaginasController {
     
     @GetMapping("/")
     public String home() {
-        return "index";
+        return "index.html";
     }
     
 }
