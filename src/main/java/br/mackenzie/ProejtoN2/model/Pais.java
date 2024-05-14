@@ -11,6 +11,9 @@ public class Pais {
     private String nome;
     private String continente;
     private Long populacao;
+    
+    @OneToMany(mappedBy = "pais")
+    private List<Cidade> cidades;
 
     public Pais() {}
 
@@ -61,7 +64,4 @@ public class Pais {
     public void setCidades(List<Cidade> cidades) {
         this.cidades = cidades;
     }
-
-    @OneToMany(mappedBy = "pais")
-    private List<Cidade> cidades;
 }

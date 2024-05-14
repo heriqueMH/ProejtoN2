@@ -11,6 +11,14 @@ public class Carro {
     private Integer ano;
     private String categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
+
+    @ManyToOne
+    @JoinColumn(name = "piloto_id")
+    private Piloto piloto;
+
     
     public Carro(){}
 
@@ -70,8 +78,4 @@ public class Carro {
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "equipe_id")
-    private Equipe equipe;
 }

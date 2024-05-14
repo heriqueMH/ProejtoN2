@@ -79,6 +79,5 @@ public class Equipe {
     public void setCarros(List<Carro> carros) {
         this.carros = carros;
     }
-
-    
 }
+

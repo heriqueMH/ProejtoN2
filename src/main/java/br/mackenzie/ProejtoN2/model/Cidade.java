@@ -12,6 +12,13 @@ public class Cidade {
     private String estado;
     private Long populacao;
 
+    @ManyToOne
+    @JoinColumn(name = "pais_id")
+    private Pais pais;
+
+    @OneToMany(mappedBy = "cidade")
+    private List<Corrida> corridas;
+
     public Cidade(){}
 
     public Cidade(Long id, String nome, String estado, Long populacao, Pais pais, List<Corrida> corridas) {
@@ -70,11 +77,4 @@ public class Cidade {
     public void setCorridas(List<Corrida> corridas) {
         this.corridas = corridas;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "pais_id")
-    private Pais pais;
-
-    @OneToMany(mappedBy = "cidade")
-    private List<Corrida> corridas;
 }

@@ -12,6 +12,10 @@ public class Corrida {
     private Date data;
     private String circuito;
     private String condicoesClimaticas;
+    
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
+    private Cidade cidade;
 
     public Corrida() {}
 
@@ -71,8 +75,4 @@ public class Corrida {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "cidade_id")
-    private Cidade cidade;
 }

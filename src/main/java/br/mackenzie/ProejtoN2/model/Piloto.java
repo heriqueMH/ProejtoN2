@@ -12,6 +12,10 @@ public class Piloto {
     private String numSuperlicenca;
     private Date dataDeNascimento;
 
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
+
     public Piloto() {}
 
     public Piloto(Long id, String nome, String numSuperlicenca, Date dataDeNascimento, Equipe equipe) {
@@ -61,10 +65,6 @@ public class Piloto {
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "equipe_id")
-    private Equipe equipe;
 }
 
 
