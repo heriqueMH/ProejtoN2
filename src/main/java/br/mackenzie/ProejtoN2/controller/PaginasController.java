@@ -11,6 +11,11 @@ public class PaginasController {
     public String home() {
         return "index.html";
     }
+
+    @GetMapping("/equipes")
+    public String equipes() {
+        return "equipes.html";
+    }
     
 }
     
