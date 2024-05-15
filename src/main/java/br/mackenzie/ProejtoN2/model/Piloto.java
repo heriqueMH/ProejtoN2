@@ -2,7 +2,7 @@ package br.mackenzie.ProejtoN2.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Piloto {
@@ -10,15 +10,18 @@ public class Piloto {
     private Long id;
     private String nome;
     private String numSuperlicenca;
-    private Date dataDeNascimento;
+    private LocalDate dataDeNascimento;
 
     @ManyToOne
     @JoinColumn(name = "equipe_id")
     private Equipe equipe;
 
+    @OneToOne(mappedBy = "piloto")
+    private Carro carro;
+
     public Piloto() {}
 
-    public Piloto(Long id, String nome, String numSuperlicenca, Date dataDeNascimento, Equipe equipe) {
+    public Piloto(Long id, String nome, String numSuperlicenca, LocalDate dataDeNascimento, Equipe equipe) {
         this.id = id;
         this.nome = nome;
         this.numSuperlicenca = numSuperlicenca;
@@ -50,11 +53,11 @@ public class Piloto {
         this.numSuperlicenca = numSuperlicenca;
     }
 
-    public Date getDataDeNascimento() {
+    public LocalDate getDataDeNascimento() {
         return this.dataDeNascimento;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 

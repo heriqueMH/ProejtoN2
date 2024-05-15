@@ -3,60 +3,73 @@ CREATE DATABASE FormulaDB;
 USE FormulaDB;
 
 
-CREATE TABLE Paises (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    continente VARCHAR(100) NOT NULL,
+-- Criação da tabela Pais
+CREATE TABLE Pais (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    continente VARCHAR(255),
     populacao BIGINT
 );
 
-
-CREATE TABLE Cidades (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    estado VARCHAR(100),
-    pais_id INT,
+-- Criação da tabela Cidade
+CREATE TABLE Cidade (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    estado VARCHAR(255),
     populacao BIGINT,
-    FOREIGN KEY (pais_id) REFERENCES Paises(id)
+    pais_id BIGINT,
+    FOREIGN KEY (pais_id) REFERENCES Pais(id),
+    FOREIGN KEY (pais_id) REFERENCES Pais(id)
 );
 
-
-CREATE TABLE Equipes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome_equipe VARCHAR(255) NOT NULL,
-    qtde_func INT,
-    pais_id INT,
-    FOREIGN KEY (pais_id) REFERENCES Paises(id)
+-- Criação da tabela Equipe
+CREATE TABLE Equipe (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nomeEquipe VARCHAR(255),
+    qtdeFunc INT,
+    pais_id BIGINT,
+    FOREIGN KEY (pais_id) REFERENCES Pais(id)
 );
 
-
-CREATE TABLE Pilotos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    num_superlicenca VARCHAR(100) NOT NULL,
-    data_de_nascimento DATE NOT NULL,
-    equipe_id INT,
-    FOREIGN KEY (equipe_id) REFERENCES Equipes(id)
+-- Criação da tabela Piloto
+CREATE TABLE Piloto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    numSuperlicenca VARCHAR(255),
+    dataDeNascimento DATE,
+    equipe_id BIGINT,
+    FOREIGN KEY (equipe_id) REFERENCES Equipe(id)
 );
 
-
-CREATE TABLE Carros (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    modelo VARCHAR(255) NOT NULL,
-    marca VARCHAR(255) NOT NULL,
+-- Criação da tabela Carro
+CREATE TABLE Carro (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    modelo VARCHAR(255),
+    marca VARCHAR(255),
     ano INT,
-    categoria VARCHAR(50) NOT NULL,
-    equipe_id INT,
-    FOREIGN KEY (equipe_id) REFERENCES Equipes(id)
+    categoria VARCHAR(255),
+    equipe_id BIGINT,
+    piloto_id BIGINT,
+    FOREIGN KEY (equipe_id) REFERENCES Equipe(id),
+    FOREIGN KEY (piloto_id) REFERENCES Piloto(id)
 );
 
+-- Criação da tabela Corrida
+CREATE TABLE Corrida (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    data DATE,
+    circuito VARCHAR(255),
+    condicoesClimaticas VARCHAR(255),
+    cidade_id BIGINT,
+    FOREIGN KEY (cidade_id) REFERENCES Cidade(id)
+);
 
-CREATE TABLE Corridas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    data DATE NOT NULL,
-    circuito VARCHAR(255) NOT NULL,
-    condicoes_climaticas VARCHAR(100),
-    cidade_id INT,
-    FOREIGN KEY (cidade_id) REFERENCES Cidades(id)
+-- Tabela para gerenciar a relação muitos-para-muitos entre Equipe e Corrida
+CREATE TABLE Equipe_Corrida (
+    equipe_id BIGINT,
+    corrida_id BIGINT,
+    PRIMARY KEY (equipe_id, corrida_id),
+    FOREIGN KEY (equipe_id) REFERENCES Equipe(id),
+    FOREIGN KEY (corrida_id) REFERENCES Corrida(id)
 );

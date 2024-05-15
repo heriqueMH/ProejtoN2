@@ -21,6 +21,13 @@ public class Equipe {
     @OneToMany(mappedBy = "equipe")
     private List<Carro> carros;
 
+    @ManyToMany
+    @JoinTable(
+        name = "equipe_corrida",
+        joinColumns = @JoinColumn(name = "equipe_id"),
+        inverseJoinColumns = @JoinColumn(name = "corrida_id"))
+    private List<Corrida> corridas;
+
     public Equipe() {}
 
     public Equipe(Long id, String nomeEquipe, Integer qtdeFunc, Pais pais, List<Piloto> pilotos, List<Carro> carros) {

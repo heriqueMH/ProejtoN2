@@ -2,24 +2,29 @@ package br.mackenzie.ProejtoN2.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Corrida {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String nome;
-    private Date data;
+    private LocalDate data;
     private String circuito;
     private String condicoesClimaticas;
-    
+
     @ManyToOne
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
+    @ManyToMany(mappedBy = "corridas")
+    private List<Equipe> equipes;
+
     public Corrida() {}
 
-    public Corrida(Long id, String nome, Date data, String circuito, String condicoesClimaticas, Cidade cidade) {
+    public Corrida(Long id, String nome, LocalDate data, String circuito, String condicoesClimaticas, Cidade cidade) {
         this.id = id;
         this.nome = nome;
         this.data = data;
@@ -44,11 +49,11 @@ public class Corrida {
         this.nome = nome;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return this.data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -74,5 +79,13 @@ public class Corrida {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public List<Equipe> getEquipes() {
+        return this.equipes;
+    }
+
+    public void setEquipes(List<Equipe> equipes) {
+        this.equipes = equipes;
     }
 }

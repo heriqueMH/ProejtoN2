@@ -19,16 +19,16 @@ public class Carro {
     @JoinColumn(name = "piloto_id")
     private Piloto piloto;
 
-    
     public Carro(){}
 
-    public Carro(Long id, String modelo, String marca, Integer ano, String categoria, Equipe equipe) {
+    public Carro(Long id, String modelo, String marca, Integer ano, String categoria, Equipe equipe, Piloto piloto)  {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;
         this.categoria = categoria;
         this.equipe = equipe;
+        this.piloto = piloto;
     }
 
     public Long getId() {
@@ -77,5 +77,13 @@ public class Carro {
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
+    }
+
+    public Piloto getPiloto() {
+        return this.piloto;
+    }
+
+    public void setPiloto(Piloto piloto) {
+        this.piloto = piloto;
     }
 }

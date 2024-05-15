@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const listaEquipes = document.getElementById('listaEquipes');
-    const equipes = [
-        { nome: 'Mercedes' },
-        { nome: 'Red Bull' },
-        { nome: 'Ferrari' }
-    ];
+    const welcomeMessage = document.querySelector('h2');
+    const currentTime = new Date().getHours();
 
-    equipes.forEach(equipe => {
-        const itemLista = document.createElement('li');
-        itemLista.textContent = equipe.nome;
-        listaEquipes.appendChild(itemLista);
-    });
+    if (currentTime < 12) {
+        welcomeMessage.textContent += ' Bom dia!';
+    } else if (currentTime < 18) {
+        welcomeMessage.textContent += ' Boa tarde!';
+    } else {
+        welcomeMessage.textContent += ' Boa noite!';
+    }
 });
