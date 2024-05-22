@@ -17,6 +17,11 @@ import java.util.List;
 @RequestMapping("/api/equipes")
 public class EquipeController {
 
+    @PostMapping
+    public Equipe criarEquipe(@RequestBody Equipe equipe) {
+        return equipeRepository.save(equipe);
+    }
+
     @Autowired
     private EquipeRepository equipeRepository;
 
@@ -31,10 +36,7 @@ public class EquipeController {
         return equipeRepository.findAll();
     }
 
-    @PostMapping
-    public Equipe criarEquipe(@RequestBody Equipe equipe) {
-        return equipeRepository.save(equipe);
-    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Equipe> obterEquipePorId(@PathVariable Long id) {

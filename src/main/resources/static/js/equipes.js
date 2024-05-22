@@ -13,12 +13,12 @@ window.onload = function() {
 }
 
 document.getElementById('formEquipe').onsubmit = function(event) {
-    event.preventDefault(); // Prevenir o comportamento padrão de envio do formulário
+    event.preventDefault();
 
     const nomeEquipe = document.getElementById('nomeEquipe').value;
     const qtdeFunc = document.getElementById('qtdeFunc').value;
 
-    fetch('http://localhost:3000/api/equipes', {
+    fetch('api/equipes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ document.getElementById('formEquipe').onsubmit = function(event) {
     .then(data => {
         console.log('Equipe adicionada com sucesso:', data);
         alert('Equipe adicionada com sucesso!');
-        window.location.reload(); // Recarrega a página para atualizar a lista de equipes
+        window.location.reload();
     })
     .catch(error => console.error('Erro ao adicionar equipe:', error));
 };
