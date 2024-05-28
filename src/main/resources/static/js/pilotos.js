@@ -13,30 +13,28 @@ async function asyncLerPilotos(proxsucesso, proxerro) {
 
 
 async function loadPilotos() {
-    try {
-        const response = await fetch('/api/pilotos');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+    fetch('/api/pilotos')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            const cardContainer = document.getElementById('cardContainerPilotos');
+            cardContainer.innerHTML = '';
+            data.forEach(piloto => addPilotoCard(piloto));
+        })
+        .catch(error => console.error('Erro ao carregar pilotos:', error));
+}
 
-        console.log('Dados carregados:', JSON.stringify(data));
-
-        const tbody = document.querySelector('#tabelaPilotos tbody');
-        if (!tbody) {
-            console.error('Elemento tbody não encontrado.');
-            return;
-        }
-        tbody.innerHTML = '';
-        data.forEach(piloto => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${piloto.nome}</td>
-                <td>${piloto.numSuperLicenca}</td>
-                <td>${piloto.dataDeNascimento}</td>
-                <td>${piloto.equipe}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar pilotos:', error);
-    }
+function addPilotoCard(piloto) {
+    const cardContainer = document.getElementById('cardContainerPilotos');
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <h3>Piloto ID: ${piloto.id}</h3>
+        <p><strong>Nome:</strong> ${piloto.nome}</p>
+        <p><strong>Idade:</strong> ${piloto.idade}</p>
+        <p><strong>Equipe:</strong> ${piloto.equipe ? piloto.equipe.nome : 'N/A'}</p>
+    `;
+    cardContainer.appendChild(card);
 }

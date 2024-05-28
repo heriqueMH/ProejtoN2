@@ -35,7 +35,7 @@ CREATE TABLE Equipe (
 CREATE TABLE Piloto (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
-    num_Super_licenca VARCHAR(255),
+    num_Superlicenca VARCHAR(255),
     data_De_Nascimento DATE,
     equipe_id BIGINT,
     FOREIGN KEY (equipe_id) REFERENCES Equipe(id)

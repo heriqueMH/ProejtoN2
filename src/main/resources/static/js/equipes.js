@@ -2,32 +2,33 @@ document.addEventListener('DOMContentLoaded', function() {
     loadEquipes();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    loadEquipes();
+});
+
 async function loadEquipes() {
-    try {
-        const response = await fetch('/api/equipes');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+    fetch('/api/equipes')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            const cardContainer = document.getElementById('cardContainerEquipes');
+            cardContainer.innerHTML = '';
+            data.forEach(equipe => addEquipeCard(equipe));
+        })
+        .catch(error => console.error('Erro ao carregar equipes:', error));
+}
 
-        console.log('Dados carregados:', JSON.stringify(data));
-
-        const tbody = document.querySelector('#tabelaEquipes tbody');
-        if (!tbody) {
-            console.error('Elemento tbody não encontrado.');
-            return;
-        }
-        tbody.innerHTML = '';
-        data.forEach(equipes => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${equipes.nomeEquipe}</td>
-                <td>${equipes.qtdeFunc}</td>
-                <td>${equipes.pais}</td>
-                <td>${equipes.pilotos}</td>
-                <td>${equipes.carros}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar equipes:', error);
-    }
+function addEquipeCard(equipe) {
+    const cardContainer = document.getElementById('cardContainerEquipes');
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <h3>Equipe ID: ${equipe.id}</h3>
+        <p><strong>Nome:</strong> ${equipe.nome}</p>
+        <p><strong>País:</strong> ${equipe.pais ? equipe.pais.nome : 'N/A'}</p>
+        <p><strong>Quantidade de Funcionários:</strong> ${equipe.qtdeFunc}</p>
+    `;
+    cardContainer.appendChild(card);
 }

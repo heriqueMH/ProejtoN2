@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const currentLocation = window.location.pathname.split("inicio").pop();
+    const currentLocation = window.location.pathname.split("/").pop();
     const menuItems = document.querySelectorAll("nav ul li");
 
     menuItems.forEach(item => {

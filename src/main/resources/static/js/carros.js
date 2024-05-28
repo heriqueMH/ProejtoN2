@@ -70,22 +70,7 @@ function getCarroData() {
 
 function handleSuccess(result) {
     console.log('Carro adicionado com sucesso:', result);
-
-    const novoItem = document.createElement('tr');
-    novoItem.innerHTML = `
-        <td>${result.id}</td>
-        <td>${result.modelo}</td>
-        <td>${result.marca}</td>
-        <td>${result.ano}</td>
-        <td>${result.categoria}</td>
-    `;
-    document.querySelector('#tabelaCarros tbody').appendChild(novoItem);
-
-    document.getElementById('idCarro').value = '';
-    document.getElementById('modeloCarro').value = '';
-    document.getElementById('marcaCarro').value = '';
-    document.getElementById('anoCarro').value = '';
-    document.getElementById('categoriaCarro').value = '';
+    addCarroCard(result);
 }
 
 function handleError(error) {
@@ -97,30 +82,33 @@ function handleError(error) {
 }
 
 async function loadCarros() {
-    try {
-        const response = await fetch('/api/carros');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+    fetch('/api/carros')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            const cardContainer = document.getElementById('cardContainer');
+            if (!cardContainer) {
+                console.error('Elemento cardContainer não encontrado.');
+                return;
+            }
+            cardContainer.innerHTML = '';
+            data.forEach(carro => addCarroCard(carro));
+        })
+        .catch(error => console.error('Erro ao carregar carros:', error));
+}
 
-        console.log('Dados carregados:', JSON.stringify(data));
-
-        const tbody = document.querySelector('#tabelaCarros tbody');
-        if (!tbody) {
-            console.error('Elemento tbody não encontrado.');
-            return;
-        }
-        tbody.innerHTML = '';
-        data.forEach(carro => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${carro.modelo}</td>
-                <td>${carro.marca}</td>
-                <td>${carro.ano}</td>
-                <td>${carro.categoria}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar carros:', error);
-    }
+function addCarroCard(carro) {
+    const cardContainer = document.getElementById('cardContainer');
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <h3>Carro ID: ${carro.id}</h3>
+        <p><strong>Modelo:</strong> ${carro.modelo}</p>
+        <p><strong>Marca:</strong> ${carro.marca}</p>
+        <p><strong>Ano:</strong> ${carro.ano}</p>
+        <p><strong>Categoria:</strong> ${carro.categoria}</p>
+    `;
+    cardContainer.appendChild(card);
 }
