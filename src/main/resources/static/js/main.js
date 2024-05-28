@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.btn-create').forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            showForm('equipeForm', 'overlay');
+            showForm('form', 'overlay');
         });
     });
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const overlay = document.getElementById('overlay');
     
         if ((event.target === overlay || !form.contains(event.target)) && !event.target.closest('.btn-create')) {
-            hideForm('equipeForm', 'overlay');
+            hideForm('form', 'overlay');
         }
     });
     loadEquipes();
