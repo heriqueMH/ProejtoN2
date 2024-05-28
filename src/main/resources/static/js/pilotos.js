@@ -2,15 +2,27 @@ document.addEventListener('DOMContentLoaded', function() {
     loadPilotos();
 });
 
+async function addPiloto() {
+    const nomePiloto = document.getElementById('nomePiloto').value;
+    const idadePiloto = document.getElementById('idadePiloto').value;
+    const nacionalidadePiloto = document.getElementById('nacionalidadePiloto').value;
 
-async function asyncLerPilotos(proxsucesso, proxerro) {
-    const URL = `/api/pilotos`;
-    fetch(URL)
-        .then(resposta => { if (!resposta.ok) throw new Error(`HTTP error! Status: ${resposta.status}`); return resposta.json(); })
-        .then(proxsucesso)
-        .catch(proxerro);
+    const dadosPiloto = { nomePiloto, idade: idadePiloto, nacionalidade: nacionalidadePiloto };
+
+    fetch('/api/pilotos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosPiloto)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Piloto criado com sucesso!');
+        document.getElementById('formCriarPiloto').reset();
+        hideForm('pilotoForm', 'overlayPiloto');
+        loadPilotos();
+    })
+    .catch(error => console.error('Erro ao criar piloto:', error));
 }
-
 
 async function loadPilotos() {
     fetch('/api/pilotos')
@@ -31,9 +43,9 @@ function addPilotoCard(piloto) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <p><strong>Piloto:</strong> ${piloto.nome}</p>
-        <p><strong>Equipe:</strong> ${piloto.equipe.nomeEquipe}</p>
-        <p><strong>Nascimento:</strong> ${piloto.dataDeNascimento}</p>
+        <p><strong>Nome:</strong> ${piloto.nome}</p>
+        <p><strong>Idade:</strong> ${piloto.idade}</p>
+        <p><strong>Nacionalidade:</strong> ${piloto.nacionalidade}</p>
     `;
     cardContainer.appendChild(card);
 }

@@ -24,12 +24,27 @@
 
     <main>
         <h2>Menu de Corridas</h2>
+        <a href="#" class="btn-create" onclick="showForm('corridaForm', 'overlay')">Criar Corrida</a>
+            
+        <div id="corridaForm" class="form-container hidden">
+            <h2>Criar Corrida</h2>
+            <form id="formCriarCorrida">
+                <label for="nomeCorrida">Nome da Corrida:</label>
+                <input type="text" id="nomeCorrida" name="nomeCorrida">
+                <label for="dataCorrida">Data:</label>
+                <input type="date" id="dataCorrida" name="dataCorrida">
+                <label for="localCorrida">Local:</label>
+                <input type="text" id="localCorrida" name="localCorrida">
+                <a href="#" class="btn-create" onclick="addCorrida()">Criar Corrida</a>
+            </form>
+        </div>
         <div id="cardContainerCorridas" class="card-container"></div>
     </main>
 
     <footer>
         <p>&copy; 2024 Formula Management System. Todos os direitos reservados.</p>
     </footer>
+    <div id="overlay" class="overlay hidden"></div>
     <script src="js/main.js"></script>
     <script src="js/corridas.js"></script>
 </body>

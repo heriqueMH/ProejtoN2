@@ -68,15 +68,88 @@ nav ul li.ativo a {
     border-bottom: 2px solid red;
 }
 
+h2 {
+    margin-top: 20px;
+}
+
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: auto;
 }
 
-h2{
-    margin: 50px;
+
+#mainContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-container {
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.form-container.hidden {
+    display: none;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-create {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-create:focus, .btn-create:active {
+    color: red;
+}
+
+.btn-create::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: red;
+    transition: width .3s;
+}
+
+.btn-create:hover::after {
+    width: 100%;
+}
+
+.btn-create.active::after {
+    width: 100%;
 }
 
 .card-container {
@@ -86,7 +159,7 @@ h2{
     justify-content: center;
     max-height: 500px; 
     max-width: 60%;
-    overflow-x: auto; /* Adiciona a rolagem horizontal */
+    overflow-x: auto;
 }
 
 .card {
@@ -102,6 +175,20 @@ h2{
     margin: 10px 0;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    display: block;
+}
+
+.overlay.hidden {
+    display: none;
+}
 
 footer {
     text-align: center;

@@ -24,6 +24,20 @@
 
     <main>
         <h2>Menu de Pilotos</h2>
+        <a href="#" class="btn-create" onclick="showForm('pilotoForm', 'overlay')">Criar Piloto</a>
+
+        <div id="pilotoForm" class="form-container hidden">
+            <h2>Criar Piloto</h2>
+            <form id="formCriarPiloto">
+                <label for="nomePiloto">Nome do Piloto:</label>
+                <input type="text" id="nomePiloto" name="nomePiloto">
+                <label for="idadePiloto">Idade:</label>
+                <input type="number" id="idadePiloto" name="idadePiloto">
+                <label for="nacionalidadePiloto">Nacionalidade:</label>
+                <input type="text" id="nacionalidadePiloto" name="nacionalidadePiloto">
+                <a href="#" class="btn-create"  onclick="addPiloto()">Criar Piloto</a>
+            </form>
+        </div>
         <table id="tabelaPilotos">
         <div id="cardContainerPilotos" class="card-container"></div>
     </main>
@@ -31,6 +45,7 @@
     <footer>
         <p>&copy; 2024 Formula Management System. Todos os direitos reservados.</p>
     </footer>
+    <div id="overlay" class="overlay hidden"></div>
     <script src="js/main.js"></script>
     <script src="js/pilotos.js"></script>
 </body>

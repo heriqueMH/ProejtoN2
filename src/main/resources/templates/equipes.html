@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Principal - Sistema de Gerenciamento de Corridas</title>
+    <title>Tela de equipes</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,13 +23,28 @@
     </header>
 
     <main>
-        <h2>Menu de Equipes</h2>
+        <div id="mainContainer">
+            <h2>Menu de Equipes</h2>
+            <a href="#" class="btn-create" onclick="showForm('equipeForm', 'overlay')">Criar Equipe</a>
+            <div id="equipeForm" class="form-container hidden">
+                <h2>Criar Equipe</h2>
+                <form id="formCriarEquipe">
+                    <label for="nomeEquipe">Nome da Equipe:</label>
+                    <input type="text" id="nomeEquipe" name="nomeEquipe">
+                    <label for="paisEquipe">País:</label>
+                    <input type="text" id="paisEquipe" name="paisEquipe">
+                    <label for="qtdeFunc">Quantidade de Funcionários:</label>
+                    <input type="number" id="qtdeFunc" name="qtdeFunc">
+                    <a href="#" class="btn-create"  onclick="addEquipe()">Criar Equipe</a>
+                </form>
+            </div>
+        </div>
         <div id="cardContainerEquipes" class="card-container"></div>
     </main>
-
     <footer>
         <p>&copy; 2024 Formula Management System. Todos os direitos reservados.</p>
     </footer>
+    <div id="overlay" class="overlay hidden"></div>
     <script src="js/main.js"></script>
     <script src="js/equipes.js"></script>
 </body>
