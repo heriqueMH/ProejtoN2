@@ -104,10 +104,9 @@ function addCarroCard(carro) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <h3>Carro ID: ${carro.id}</h3>
+        <p><strong>Equipe:</strong> ${carro.equipe.nomeEquipe}</p>
         <p><strong>Modelo:</strong> ${carro.modelo}</p>
-        <p><strong>Marca:</strong> ${carro.marca}</p>
-        <p><strong>Ano:</strong> ${carro.ano}</p>
+        <p><strong>Fabricação:</strong> ${carro.ano}</p>
         <p><strong>Categoria:</strong> ${carro.categoria}</p>
     `;
     cardContainer.appendChild(card);

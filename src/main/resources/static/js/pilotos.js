@@ -31,10 +31,9 @@ function addPilotoCard(piloto) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <h3>Piloto ID: ${piloto.id}</h3>
-        <p><strong>Nome:</strong> ${piloto.nome}</p>
-        <p><strong>Idade:</strong> ${piloto.idade}</p>
-        <p><strong>Equipe:</strong> ${piloto.equipe ? piloto.equipe.nome : 'N/A'}</p>
+        <p><strong>Piloto:</strong> ${piloto.nome}</p>
+        <p><strong>Equipe:</strong> ${piloto.equipe.nomeEquipe}</p>
+        <p><strong>Nascimento:</strong> ${piloto.dataDeNascimento}</p>
     `;
     cardContainer.appendChild(card);
 }

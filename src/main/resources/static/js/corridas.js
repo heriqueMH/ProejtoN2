@@ -25,7 +25,6 @@ function addCorridaCard(corrida) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <h3>Corrida ID: ${corrida.id}</h3>
         <p><strong>Nome:</strong> ${corrida.nome}</p>
         <p><strong>Data:</strong> ${corrida.data}</p>
         <p><strong>Cidade:</strong> ${corrida.cidade ? corrida.cidade.nome : 'N/A'}</p>

@@ -22,13 +22,17 @@ async function loadEquipes() {
 
 function addEquipeCard(equipe) {
     const cardContainer = document.getElementById('cardContainerEquipes');
+    const pilotos = equipe.pilotos ? equipe.pilotos.map(piloto => `<p><strong>Piloto:</strong> ${piloto.nome}</p>`).join('') : '<p>Nenhum piloto disponível</p>';
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <h3>Equipe ID: ${equipe.id}</h3>
-        <p><strong>Nome:</strong> ${equipe.nome}</p>
+        <p><strong>Nome:</strong> ${equipe.nomeEquipe}</p>
+        ${pilotos}
         <p><strong>País:</strong> ${equipe.pais ? equipe.pais.nome : 'N/A'}</p>
         <p><strong>Quantidade de Funcionários:</strong> ${equipe.qtdeFunc}</p>
     `;
     cardContainer.appendChild(card);
 }
+
+
+
