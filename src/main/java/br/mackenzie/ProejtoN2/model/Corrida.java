@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Corrida {
     @Id
@@ -17,9 +20,11 @@ public class Corrida {
 
     @ManyToOne
     @JoinColumn(name = "cidade_id")
+    @JsonManagedReference
     private Cidade cidade;
 
     @ManyToMany(mappedBy = "corridas")
+    @JsonBackReference 
     private List<Equipe> equipes;
 
     public Corrida() {}

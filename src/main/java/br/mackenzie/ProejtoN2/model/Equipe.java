@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Equipe {
     @Id @GeneratedValue
@@ -13,12 +16,15 @@ public class Equipe {
 
     @ManyToOne
     @JoinColumn(name = "pais_id")
+    @JsonManagedReference
     private Pais pais;
 
     @OneToMany(mappedBy = "equipe")
+    @JsonBackReference 
     private List<Piloto> pilotos;
 
     @OneToMany(mappedBy = "equipe")
+    @JsonBackReference 
     private List<Carro> carros;
 
     @ManyToMany

@@ -1,5 +1,7 @@
 package br.mackenzie.ProejtoN2.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,22 +15,18 @@ public class Carro {
 
     @ManyToOne
     @JoinColumn(name = "equipe_id")
+    @JsonManagedReference
     private Equipe equipe;
-
-    @ManyToOne
-    @JoinColumn(name = "piloto_id")
-    private Piloto piloto;
 
     public Carro(){}
 
-    public Carro(Long id, String modelo, String marca, Integer ano, String categoria, Equipe equipe, Piloto piloto)  {
+    public Carro(Long id, String modelo, String marca, Integer ano, String categoria, Equipe equipe)  {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;
         this.categoria = categoria;
         this.equipe = equipe;
-        this.piloto = piloto;
     }
 
     public Long getId() {
@@ -77,13 +75,5 @@ public class Carro {
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
-    }
-
-    public Piloto getPiloto() {
-        return this.piloto;
-    }
-
-    public void setPiloto(Piloto piloto) {
-        this.piloto = piloto;
     }
 }

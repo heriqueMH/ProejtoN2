@@ -51,7 +51,6 @@ public class CarroController {
                     carro.setAno(detalhescarro.getAno());
                     carro.setCategoria(detalhescarro.getCategoria());
                     carro.setEquipe(detalhescarro.getEquipe());
-                    carro.setPiloto(detalhescarro.getPiloto());
                     return ResponseEntity.ok(carroRepository.save(carro));
                 })
                 .orElse(ResponseEntity.notFound().build());

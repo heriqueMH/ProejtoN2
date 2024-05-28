@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipes - Sistema de Gerenciamento de Corridas</title>
+    <title>Tela Principal - Sistema de Gerenciamento de Corridas</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Equipes</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="pilotos">Pilotos</a></li>
-                <li><a href="carros">Carros</a></li>
-                <li><a href="corridas">Corridas</a></li>
-            </ul>
-        </nav>
+        <h1>Sistema de Gerenciamento de Corridas</h1>
+        <div id="barranav">
+            <nav>
+                <ul>
+                    <li class="index"><a href="index">Início</a></li>
+                    <li class="equipes"><a href="equipes">Equipes</a></li>
+                    <li class="pilotos"><a href="pilotos">Pilotos</a></li>
+                    <li class="carros"><a href="carros">Carros</a></li>
+                    <li class="corridas"><a href="corridas">Corridas</a></li>
+                </ul>
+            </nav>
+            <div id="barraidn"></div>
+        </div>
     </header>
 
     <main>
-        <h2>Lista de Equipes</h2>
-        <ul id="listaDeEquipes">
-        </ul>
+        <h2>Menu de Equipes</h2>
     </main>
 
     <footer>
         <p>&copy; 2024 Formula Management System. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="js/equipes.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

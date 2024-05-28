@@ -18,7 +18,6 @@ CREATE TABLE Cidade (
     estado VARCHAR(255),
     populacao BIGINT,
     pais_id BIGINT,
-    FOREIGN KEY (pais_id) REFERENCES Pais(id),
     FOREIGN KEY (pais_id) REFERENCES Pais(id)
 );
 
@@ -28,6 +27,7 @@ CREATE TABLE Equipe (
     nomeEquipe VARCHAR(255),
     qtdeFunc INT,
     pais_id BIGINT,
+    carro_id BIGINT,
     FOREIGN KEY (pais_id) REFERENCES Pais(id)
 );
 
@@ -50,8 +50,7 @@ CREATE TABLE Carro (
     categoria VARCHAR(255),
     equipe_id BIGINT,
     piloto_id BIGINT,
-    FOREIGN KEY (equipe_id) REFERENCES Equipe(id),
-    FOREIGN KEY (piloto_id) REFERENCES Piloto(id)
+    FOREIGN KEY (equipe_id) REFERENCES Equipe(id)
 );
 
 -- Criação da tabela Corrida
@@ -73,3 +72,100 @@ CREATE TABLE Equipe_Corrida (
     FOREIGN KEY (equipe_id) REFERENCES Equipe(id),
     FOREIGN KEY (corrida_id) REFERENCES Corrida(id)
 );
+
+-- Inserção dos países
+INSERT INTO Pais (nome, continente, populacao) VALUES
+('United Kingdom', 'Europe', 67000000),
+('Italy', 'Europe', 60000000),
+('Germany', 'Europe', 83000000),
+('France', 'Europe', 67000000),
+('Spain', 'Europe', 47000000),
+('Netherlands', 'Europe', 17000000),
+('Japan', 'Asia', 125000000),
+('China', 'Asia', 1400000000),
+('United States', 'North America', 331000000),
+('Brazil', 'South America', 213000000),
+('Australia', 'Oceania', 25000000);
+
+-- Inserção das cidades
+INSERT INTO Cidade (nome, estado, populacao, pais_id) VALUES
+('London', 'England', 8900000, 1),
+('Milan', 'Lombardy', 1350000, 2),
+('Berlin', 'Berlin', 3600000, 3),
+('Paris', 'Ile-de-France', 2140000, 4),
+('Madrid', 'Madrid', 3260000, 5),
+('Amsterdam', 'North Holland', 872000, 6),
+('Tokyo', 'Tokyo', 37400000, 7),
+('Shanghai', 'Shanghai', 26300000, 8),
+('New York', 'New York', 8419000, 9),
+('Sao Paulo', 'Sao Paulo', 12300000, 10),
+('Sydney', 'New South Wales', 5312000, 11);
+
+-- Inserção das equipes de Fórmula 1
+INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
+('Mercedes', 1000, 1),
+('Ferrari', 1000, 2),
+('McLaren', 800, 1),
+('Aston Martin', 700, 1),
+('Alpine', 650, 4),
+('Williams', 600, 1),
+('AlphaTauri', 550, 2),
+('Stake F1 Team', 500, 3),
+('Haas', 450, 9);
+
+-- Inserção das equipes de Fórmula 2
+INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
+('ART Grand Prix', 200, 1),
+('Campos Racing', 180, 2),
+('Carlin', 170, 1),
+('DAMS', 160, 4),
+('Hitech Grand Prix', 150, 1),
+('MP Motorsport', 140, 6),
+('Prema Racing', 130, 2),
+('Trident', 120, 2),
+('Virtuosi Racing', 110, 1),
+('PHM Racing by Charouz', 100, 10),
+('Rodin Carlin', 90, 11);
+
+-- Inserção dos pilotos de Fórmula 1
+INSERT INTO Piloto (nome, numSuperlicenca, dataDeNascimento, equipe_id) VALUES
+('Lewis Hamilton', '12345', '1985-01-07', 1),
+('George Russell', '23456', '1998-02-15', 1),
+('Charles Leclerc', '34567', '1997-10-16', 2),
+('Carlos Sainz', '45678', '1994-09-01', 2),
+('Lando Norris', '56789', '1999-11-13', 3),
+('Oscar Piastri', '67890', '2001-04-06', 3),
+('Fernando Alonso', '78901', '1981-07-29', 4),
+('Lance Stroll', '89012', '1998-10-29', 4),
+('Esteban Ocon', '90123', '1996-09-17', 5),
+('Pierre Gasly', '01234', '1996-02-07', 5),
+('Alex Albon', '34512', '1996-03-23', 6),
+('Logan Sargeant', '45623', '2000-12-31', 6),
+('Daniel Ricciardo', '56734', '1989-07-01', 7),
+('Yuki Tsunoda', '67845', '2000-05-11', 7),
+('Valtteri Bottas', '78956', '1989-08-28', 8),
+('Zhou Guanyu', '89067', '1999-05-30', 8),
+('Kevin Magnussen', '90178', '1992-10-05', 9),
+('Nico Hulkenberg', '01289', '1987-08-19', 9);
+
+-- Inserção dos pilotos de Fórmula 2
+INSERT INTO Piloto (nome, numSuperlicenca, dataDeNascimento, equipe_id) VALUES
+('Theo Pourchaire', '11223', '2003-08-20', 10),
+('Enzo Fittipaldi', '22334', '2001-07-18', 11);
+
+-- Inserção dos carros de Fórmula 1
+INSERT INTO Carro (modelo, marca, ano, categoria, equipe_id) VALUES
+('W14', 'Mercedes', 2024, 'F1', 1),
+('SF-23', 'Ferrari', 2024, 'F1', 2),
+('MCL36', 'McLaren', 2024, 'F1', 3),
+('AMR23', 'Aston Martin', 2024, 'F1', 4),
+('A523', 'Alpine', 2024, 'F1', 5),
+('FW45', 'Williams', 2024, 'F1', 6),
+('AT04', 'AlphaTauri', 2024, 'F1', 7),
+('C43', 'Stake F1 Team', 2024, 'F1', 8),
+('VF-23', 'Haas', 2024, 'F1', 9);
+
+-- Inserção dos carros de Fórmula 2
+INSERT INTO Carro (modelo, marca, ano, categoria, equipe_id) VALUES
+('ART-23', 'Dallara', 2024, 'F2', 10),
+('Campos-23', 'Dallara', 2024, 'F2', 11);

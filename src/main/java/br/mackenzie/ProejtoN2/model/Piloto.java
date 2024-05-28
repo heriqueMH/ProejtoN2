@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Piloto {
     @Id @GeneratedValue
@@ -14,10 +16,8 @@ public class Piloto {
 
     @ManyToOne
     @JoinColumn(name = "equipe_id")
+    @JsonManagedReference
     private Equipe equipe;
-
-    @OneToOne(mappedBy = "piloto")
-    private Carro carro;
 
     public Piloto() {}
 
