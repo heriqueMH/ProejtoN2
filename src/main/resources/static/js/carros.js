@@ -23,7 +23,7 @@ async function asyncLerCarros(proxsucesso, proxerro) {
         .catch(proxerro);
 }
 
-async function asyncLerCarrinhoById(id, proxsucesso, proxerro) {
+async function asyncLerCarroById(id, proxsucesso, proxerro) {
     const URL = `/api/carros/${id}`;
     fetch(URL)
         .then(resposta => { if (!resposta.ok) throw new Error(`HTTP error! Status: ${resposta.status}`); return resposta.json(); })
@@ -113,7 +113,6 @@ async function loadCarros() {
         data.forEach(carro => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${carro.id}</td>
                 <td>${carro.modelo}</td>
                 <td>${carro.marca}</td>
                 <td>${carro.ano}</td>
