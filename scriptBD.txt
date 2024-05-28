@@ -24,8 +24,8 @@ CREATE TABLE Cidade (
 -- Criação da tabela Equipe
 CREATE TABLE Equipe (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nomeEquipe VARCHAR(255),
-    qtdeFunc INT,
+    nome_Equipe VARCHAR(255),
+    qtde_Func INT,
     pais_id BIGINT,
     carro_id BIGINT,
     FOREIGN KEY (pais_id) REFERENCES Pais(id)
@@ -35,8 +35,8 @@ CREATE TABLE Equipe (
 CREATE TABLE Piloto (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
-    numSuperlicenca VARCHAR(255),
-    dataDeNascimento DATE,
+    num_Super_licenca VARCHAR(255),
+    data_De_Nascimento DATE,
     equipe_id BIGINT,
     FOREIGN KEY (equipe_id) REFERENCES Equipe(id)
 );
@@ -59,7 +59,7 @@ CREATE TABLE Corrida (
     nome VARCHAR(255),
     data DATE,
     circuito VARCHAR(255),
-    condicoesClimaticas VARCHAR(255),
+    condicoes_Climaticas VARCHAR(255),
     cidade_id BIGINT,
     FOREIGN KEY (cidade_id) REFERENCES Cidade(id)
 );
@@ -102,7 +102,7 @@ INSERT INTO Cidade (nome, estado, populacao, pais_id) VALUES
 ('Sydney', 'New South Wales', 5312000, 11);
 
 -- Inserção das equipes de Fórmula 1
-INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
+INSERT INTO Equipe (nome_Equipe, qtde_Func, pais_id) VALUES
 ('Mercedes', 1000, 1),
 ('Ferrari', 1000, 2),
 ('McLaren', 800, 1),
@@ -114,7 +114,7 @@ INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
 ('Haas', 450, 9);
 
 -- Inserção das equipes de Fórmula 2
-INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
+INSERT INTO Equipe (nome_Equipe, qtde_Func, pais_id) VALUES
 ('ART Grand Prix', 200, 1),
 ('Campos Racing', 180, 2),
 ('Carlin', 170, 1),
@@ -128,7 +128,7 @@ INSERT INTO Equipe (nomeEquipe, qtdeFunc, pais_id) VALUES
 ('Rodin Carlin', 90, 11);
 
 -- Inserção dos pilotos de Fórmula 1
-INSERT INTO Piloto (nome, numSuperlicenca, dataDeNascimento, equipe_id) VALUES
+INSERT INTO Piloto (nome, num_Super_licenca, data_De_Nascimento, equipe_id) VALUES
 ('Lewis Hamilton', '12345', '1985-01-07', 1),
 ('George Russell', '23456', '1998-02-15', 1),
 ('Charles Leclerc', '34567', '1997-10-16', 2),
@@ -149,7 +149,7 @@ INSERT INTO Piloto (nome, numSuperlicenca, dataDeNascimento, equipe_id) VALUES
 ('Nico Hulkenberg', '01289', '1987-08-19', 9);
 
 -- Inserção dos pilotos de Fórmula 2
-INSERT INTO Piloto (nome, numSuperlicenca, dataDeNascimento, equipe_id) VALUES
+INSERT INTO Piloto (nome, num_Super_licenca, data_De_Nascimento, equipe_id) VALUES
 ('Theo Pourchaire', '11223', '2003-08-20', 10),
 ('Enzo Fittipaldi', '22334', '2001-07-18', 11);
 
