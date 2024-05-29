@@ -7,6 +7,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+
+
 @Entity
 public class Cidade {
     @Id @GeneratedValue
@@ -17,11 +19,11 @@ public class Cidade {
 
     @ManyToOne
     @JoinColumn(name = "pais_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Pais pais;
 
     @OneToMany(mappedBy = "cidade")
-    @JsonBackReference 
+    @JsonManagedReference
     private List<Corrida> corridas;
 
     public Cidade(){}

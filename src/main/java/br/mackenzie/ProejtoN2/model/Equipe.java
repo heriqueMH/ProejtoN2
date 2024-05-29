@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -20,11 +19,11 @@ public class Equipe {
     private Pais pais;
 
     @OneToMany(mappedBy = "equipe")
-    @JsonBackReference 
+    @JsonManagedReference
     private List<Piloto> pilotos;
 
     @OneToMany(mappedBy = "equipe")
-    @JsonBackReference 
+    @JsonManagedReference
     private List<Carro> carros;
 
     @ManyToMany
