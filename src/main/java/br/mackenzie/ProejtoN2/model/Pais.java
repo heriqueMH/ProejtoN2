@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Pais {
@@ -15,7 +15,7 @@ public class Pais {
     private Long populacao;
     
     @OneToMany(mappedBy = "pais")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Cidade> cidades;
 
     public Pais() {}
