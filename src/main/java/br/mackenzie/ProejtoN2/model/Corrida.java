@@ -16,9 +16,11 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Corrida {
     @Id
     @GeneratedValue
@@ -30,7 +32,6 @@ public class Corrida {
 
     @ManyToOne
     @JoinColumn(name = "cidade_id")
-    @JsonBackReference
     private Cidade cidade;
 
     @ManyToMany(mappedBy = "corridas")

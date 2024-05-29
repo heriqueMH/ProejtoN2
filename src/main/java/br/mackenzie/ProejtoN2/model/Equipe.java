@@ -16,8 +16,11 @@ import jakarta.persistence.*;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Equipe {
     @Id @GeneratedValue
     private Long id;
@@ -30,11 +33,9 @@ public class Equipe {
     private Pais pais;
 
     @OneToMany(mappedBy = "equipe")
-    @JsonBackReference
     private List<Piloto> pilotos;
 
     @OneToMany(mappedBy = "equipe")
-    @JsonBackReference
     private List<Carro> carros;
 
     @ManyToMany

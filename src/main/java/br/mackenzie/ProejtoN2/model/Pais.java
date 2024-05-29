@@ -15,9 +15,11 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pais {
     @Id @GeneratedValue
     private Long id;
@@ -26,7 +28,6 @@ public class Pais {
     private Long populacao;
     
     @OneToMany(mappedBy = "pais")
-    @JsonBackReference
     private List<Cidade> cidades;
 
     public Pais() {}

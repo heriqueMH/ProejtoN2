@@ -11,11 +11,13 @@ package br.mackenzie.ProejtoN2.model;
  * 
 */
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.*;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Carro {
     @Id @GeneratedValue
     private Long id;
@@ -26,7 +28,6 @@ public class Carro {
 
     @ManyToOne
     @JoinColumn(name = "equipe_id")
-    @JsonBackReference
     private Equipe equipe;
 
     public Carro(){}
