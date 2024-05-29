@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Mostrar o formulário de criação de equipe
+
     document.querySelectorAll('.btn-create').forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
@@ -17,16 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Fechar o formulário ao clicar fora dele
     document.addEventListener('click', function(event) {
-        const form = document.getElementById('equipeForm');
+        const form = document.getElementById('form');
         const overlay = document.getElementById('overlay');
     
         if ((event.target === overlay || !form.contains(event.target)) && !event.target.closest('.btn-create')) {
             hideForm('form', 'overlay');
         }
     });
-    loadEquipes();
 });
 
 function showForm(formId, overlayId) {
@@ -42,5 +40,4 @@ function hideForm(formId, overlayId) {
     form.classList.add('hidden');
     overlay.classList.add('hidden');
 }
-
 

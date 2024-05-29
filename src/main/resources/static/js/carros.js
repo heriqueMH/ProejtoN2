@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadCarros();
+    loadEquipesOptions();
+
 });
 
 async function asyncCriarCarro(dadosCarro, proxsucesso, proxerro) {
@@ -110,4 +112,44 @@ function addCarroCard(carro) {
         <p><strong>Categoria:</strong> ${carro.categoria}</p>
     `;
     cardContainer.appendChild(card);
+}
+
+document.getElementById('formCriar').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const modelo = document.getElementById('modeloCarro').value;
+    const marca = document.getElementById('marcaCarro').value;
+    const ano = document.getElementById('anoCarro').value;
+    const categoria = document.getElementById('categoriaCarro').value;
+    const equipeId = document.getElementById('equipeCarro').value;
+
+    const data = { modelo, marca, ano, categoria, equipeId };
+
+    fetch('/api/carros', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Carro criado com sucesso:', data))
+    .catch(error => console.error('Erro ao criar carro:', error));
+});
+
+function loadEquipesOptions() {
+    fetch('/api/equipes')
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao carregar equipes');
+            return response.json();
+        })
+        .then(equipes => {
+            const selectEquipe = document.getElementById('equipeId');
+            equipes.forEach(equipe => {
+                let option = document.createElement('option');
+                option.value = equipe.id;
+                option.textContent = equipe.nomeEquipe;
+                selectEquipe.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar equipes:', error));
 }

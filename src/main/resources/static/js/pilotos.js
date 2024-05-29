@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadPilotos();
+    loadEquipesOptions();
 });
 
 async function addPiloto() {
     const nomePiloto = document.getElementById('nomePiloto').value;
-    const idadePiloto = document.getElementById('idadePiloto').value;
-    const nacionalidadePiloto = document.getElementById('nacionalidadePiloto').value;
+    const numSuperLicenca = document.getElementById('numSuperLicenca').value;
+    const dataNasc = document.getElementById('dataNasc').value;
+    const equipeId = document.getElementById('equipeId').value;
 
-    const dadosPiloto = { nomePiloto, idade: idadePiloto, nacionalidade: nacionalidadePiloto };
+    const dadosPiloto = { nome: nomePiloto, num_Superlicenca: numSuperLicenca, data_De_Nascimento: dataNasc, equipe_id: equipeId };
 
     fetch('/api/pilotos', {
         method: 'POST',
@@ -18,13 +20,11 @@ async function addPiloto() {
     .then(data => {
         alert('Piloto criado com sucesso!');
         document.getElementById('formCriarPiloto').reset();
-        hideForm('pilotoForm', 'overlayPiloto');
-        loadPilotos();
     })
     .catch(error => console.error('Erro ao criar piloto:', error));
 }
 
-async function loadPilotos() {
+function loadPilotos() {
     fetch('/api/pilotos')
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -44,8 +44,26 @@ function addPilotoCard(piloto) {
     card.className = 'card';
     card.innerHTML = `
         <p><strong>Nome:</strong> ${piloto.nome}</p>
-        <p><strong>Idade:</strong> ${piloto.idade}</p>
-        <p><strong>Nacionalidade:</strong> ${piloto.nacionalidade}</p>
+        <p><strong>Data de Nascimento:</strong> ${piloto.dataDeNascimento}</p>
+        <p><strong>Superlicença:</strong> ${piloto.numSuperlicenca}</p>
     `;
     cardContainer.appendChild(card);
+}
+
+function loadEquipesOptions() {
+    fetch('/api/equipes')
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao carregar equipes');
+            return response.json();
+        })
+        .then(equipes => {
+            const selectEquipe = document.getElementById('equipeId');
+            equipes.forEach(equipe => {
+                let option = document.createElement('option');
+                option.value = equipe.id;
+                option.textContent = equipe.nomeEquipe;
+                selectEquipe.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar equipes:', error));
 }

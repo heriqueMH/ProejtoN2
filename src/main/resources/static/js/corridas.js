@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCorridas();
 });
 
-async function addCorrida() {
-    const nomeCorrida = document.getElementById('nomeCorrida').value;
-    const dataCorrida = document.getElementById('dataCorrida').value;
-    const localCorrida = document.getElementById('localCorrida').value;
+function addCorrida() {
+    const nome = document.getElementById('nomeCorrida').value;
+    const data = document.getElementById('dataCorrida').value;
+    const circuito = document.getElementById('circuitoCorrida').value;
+    const condicoes_Climaticas = document.getElementById('condicoesClimaticas').value;
+    const cidade_id = document.getElementById('cidadeId').value;
 
-    const dadosCorrida = { nomeCorrida, data: dataCorrida, local: localCorrida };
+    const dadosCorrida = { nome, data, circuito, condicoes_Climaticas, cidade_id };
 
     fetch('/api/corridas', {
         method: 'POST',
@@ -18,12 +20,9 @@ async function addCorrida() {
     .then(data => {
         alert('Corrida criada com sucesso!');
         document.getElementById('formCriarCorrida').reset();
-        hideForm('corridaForm', 'overlayCorrida');
-        loadCorridas();
     })
     .catch(error => console.error('Erro ao criar corrida:', error));
 }
-
 async function loadCorridas() {
     fetch('/api/corridas')
         .then(response => {
@@ -43,9 +42,9 @@ function addCorridaCard(corrida) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-        <p><strong>Nome:</strong> ${corrida.nomeCorrida}</p>
+        <p><strong>Nome:</strong> ${corrida.nome}</p>
         <p><strong>Data:</strong> ${corrida.data}</p>
-        <p><strong>Local:</strong> ${corrida.local}</p>
+        <p><strong>Circuito:</strong> ${corrida.circuito}</p>
     `;
     cardContainer.appendChild(card);
 }

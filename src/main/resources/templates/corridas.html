@@ -30,11 +30,21 @@
             <h2>Criar Corrida</h2>
             <form id="formCriar">
                 <label for="nomeCorrida">Nome da Corrida:</label>
-                <input type="text" id="nomeCorrida" name="nomeCorrida">
+                <input type="text" id="nomeCorrida" name="nome">
+            
                 <label for="dataCorrida">Data:</label>
-                <input type="date" id="dataCorrida" name="dataCorrida">
-                <label for="localCorrida">Local:</label>
-                <input type="text" id="localCorrida" name="localCorrida">
+                <input type="date" id="dataCorrida" name="data">
+            
+                <label for="circuitoCorrida">Circuito:</label>
+                <input type="text" id="circuitoCorrida" name="circuito">
+            
+                <label for="condicoesClimaticas">Condições Climáticas:</label>
+                <input type="text" id="condicoesClimaticas" name="condicoes_Climaticas">
+            
+                <label for="cidadeId">Cidade:</label>
+                <select id="cidadeId" name="cidade_id">
+                </select>
+            
                 <a href="#" class="btn-create" onclick="addCorrida()">Criar Corrida</a>
             </form>
         </div>
