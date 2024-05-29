@@ -52,7 +52,6 @@ async function addEquipeCard(equipe) {
         card.innerHTML = `
             <p><strong>Nome:</strong> ${equipe.nomeEquipe}</p>
             ${pilotosHtml}
-            <p><strong>País:</strong> ${equipe.pais ? equipe.pais.nome : 'N/A'}</p>
             <p><strong>Quantidade de Funcionários:</strong> ${equipe.qtdeFunc}</p>
         `;
     } catch (error) {
@@ -60,7 +59,6 @@ async function addEquipeCard(equipe) {
         card.innerHTML = `
             <p><strong>Nome:</strong> ${equipe.nomeEquipe}</p>
             <p>Erro ao carregar pilotos</p>
-            <p><strong>País:</strong> ${equipe.pais ? equipe.pais.nome : 'N/A'}</p>
             <p><strong>Quantidade de Funcionários:</strong> ${equipe.qtdeFunc}</p>
         `;
     }
